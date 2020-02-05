@@ -1,0 +1,258 @@
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial;
+    background: #f1f1f1;
+    font-size:16px;
+  }
+  
+  .header {
+    padding: 8px;
+    text-align: left;
+    background:#f1f1f1;
+  font-size:30px;
+  }
+  
+  .navbar {
+    overflow: hidden;
+    background-color: #333;
+  width:100%;
+  }
+  
+  .navbar a {
+    float: left;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+  }
+    
+  .dropdown {
+    float: right;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 20px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #ccc;
+   color: black;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+   right: 0;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .active {
+    background-color: rgb(95, 83, 83);
+  }
+  
+  input[type=text],[type=date], select, textarea {
+    width: 60%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  input[type=password] {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  .buttons {
+    background-color: dodgerblue; /*#4CAF50;*/
+    color: white;
+      padding: 10px 18px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+   width: auto;
+  border-radius: 5px;
+   font-size: 17px;
+  
+  }
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  
+  }
+  
+  .columns {
+    float: left;
+    width: 100%;
+    padding: 5px;
+  }
+  
+  .rows:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+    img {vertical-align: middle; }
+  
+  .slideshow-container {  
+    position: relative; 
+    height: 70%;
+    width: 100%;
+    display: block;
+  }
+ 
+  .about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+  padding: 8px 8px;
+  width: 100%;
+  }
+  .about-section ol li {
+   text-align: left;
+  margin-left: 30%;
+  
+  }
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  .row{
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .lgnfrm{
+    width: 50%;
+    padding: 0 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-left: 30%;
+    margin-top: 8px;
+  }
+  .sgnfrm{
+    width:60%;
+    height:70%;
+    padding: 0 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-left: 25%;
+  }
+  .tabcontent{
+    padding: 0 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
+  }
+
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+  .col{
+    background-color:#f1f1f1;
+  }
+  @media screen and (max-width: 600px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+    .slideshow-container {  
+      position: relative; 
+      height: 70%;
+      width: 100%;
+      display: block;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+  .column {
+      width: 100%;
+      display: block;
+    }
+   .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+  .btnStyle {
+    width:auto;
+    float: right;
+  };
+.lgnbtn {
+      background-color:#f1f1f1;
+      padding:16px;
+}
+.btn {
+    float:right;
+     color:dodgerblue;
+}
+
+  
+  
