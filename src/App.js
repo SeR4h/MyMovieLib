@@ -1,24 +1,25 @@
 import React, { Component } from 'react'
 import './Content/Main.css';
 
-import img from './Content/images/1.png';
-import img2 from './Content/images/2.png';
-import img3 from './Content/images/3.png';
-import img4 from './Content/images/4.png';
-import img5 from './Content/images/5.png';
+import img from './Content/images/1.jpg';
+import img1 from './Content/images/it.jpg';
+import img2 from './Content/images/Supergirl.jpg';
+import img3 from './Content/images/7.jpg';
+import img5 from './Content/images/Incredibles.jpg';
 import img6 from './Content/images/6.png';
-import img7 from './Content/images/Avengers.png';
-import img8 from './Content/images/FastFurious.png';
+import img4 from './Content/images/FastFurious.jpg';
+import img7 from './Content/images/spider.jpg';
+
 
 const pics = [
     img,
+    img1,
     img2,
-    img8,
-    img5,
-    img7,
-    img4,
     img3,
+    img4,
+    img5,
     img6,
+    img7,
 ]
 
 class App extends Component {

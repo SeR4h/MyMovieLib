@@ -24,7 +24,7 @@ class SignUp extends Component {
           <p>By creating an account you agree to our <a href="." style={{ color: 'dodgerblue' }}>Terms & Privacy</a>.</p>
 
 
-          <a href="/" class="cancelbtn buttons">Cancel</a> <button type="submit" class="buttons" style={{ marginLeft: '30%' }}>Sign Up</button>
+          <a href="/" className="cancelbtn buttons">Cancel</a> <button type="submit" className="buttons" style={{ marginLeft: '30%' }}>Sign Up</button>
         </div>
       </form>
 

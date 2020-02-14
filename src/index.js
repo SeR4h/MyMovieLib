@@ -8,9 +8,10 @@ import SignUp from './Content/SignUp';
 import about from './Content/about';
 import login from './Content/Login';
 import welcome from './Content/WelcomePage';
-import addmovie from './Content/addMovie';
+import addMovie from './Content/addMovie';
+import movie from './Content/movie';
+import edit from './Content/edit';
 import * as serviceWorker from './serviceWorker';
-
 
 const routing = (
   <Router>
@@ -20,7 +21,9 @@ const routing = (
       <Route path="/about" component={about} />
       <Route path="/Login" component={login} />
       <Route path="/WelcomePage" component={welcome} />
-      <Route path="/addMovie" component={addmovie} />
+      <Route path="/addMovie" component={addMovie} />
+      <Route path="/movie/:id" component={movie} />
+      <Route path="/edit/:id" component={edit} />
     </div>
   </Router>
 )
