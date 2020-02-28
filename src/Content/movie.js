@@ -1,6 +1,7 @@
 import React from 'react'
 import './Main.css';
-
+import { deleteMovie } from './myMovieActions';
+import { Link } from 'react-router-dom'
 const fetch = require('node-fetch')
 
 class movie extends React.Component {
@@ -23,26 +24,34 @@ class movie extends React.Component {
       .catch(error => console.log('error', error));
 
   }
+  handleDelete = (e, id) => {
+    e.preventDefault();
+    if (window.confirm('Are you sure you want to delete this movie?')) {
+      deleteMovie(id);
+    }
+
+  }
   componentDidMount() {
     const id = this.props.match.params.id
     this.singleMovie(id);
   }
   render() {
+
     return (
 
       <div>
         <div className="header">
-          MyMovieLib<a href="/Login" type="submit" class="buttons btnStyle" >Log In</a>
+          MyMovieLib<Link to="/Login" className="buttons btnStyle">Log In</Link>
         </div>
         <div className="navbar">
-          <a className="tablink" href="/" >Home</a>
-          <a className="tablink active " href="/WelcomePage" >All Movies</a>
-          <a className="tablink" href="/addMovie" >Add Movie</a>
+          <Link to="/" >Home</Link>
+          <Link to="/WelcomePage" className="active">All Movies</Link>
+          <Link to="/addMovie">Add Movie</Link>
           <div className="dropdown">
             <button className="dropbtn">MyAccount</button>
             <div className="dropdown-content">
-              <a className="tablink" href="/WelcomePage">Profile</a>
-              <a className="tablink" href="/WelcomePage">Change Password</a>
+              <Link to="/WelcomePage" >Profile</Link>
+              <Link to="/WelcomePage" >Change Password</Link>
             </div>
           </div>
         </div>
@@ -58,13 +67,18 @@ class movie extends React.Component {
             <p>{this.state.movieData.description}</p>
             <p>Released On: {this.state.movieData.releaseDate}</p>
             <p>Find trailer:<a href={this.state.movieData.trailer}> {this.state.movieData.trailer}</a></p>
-            <a href={`/edit/${this.state.movieData._id}`} className="btns" > EDIT</a>
+            <Link to={`/edit/${this.props.match.params.id}`} className="btns">EDIT</Link>
 
           </div>
-        </div></div>
+        </div>
+        <form onSubmit={e => this.handleDelete(e, this.state.movieData._id)}>
+          <button type="submit" name="Delete" className="cancelbtn">Delete</button>
+        </form>
+      </div>
 
 
-    );
+    )
+
   }
 
 }

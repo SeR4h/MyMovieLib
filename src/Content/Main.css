@@ -38,6 +38,26 @@
     overflow: hidden;
   }
   
+  .navbar .floatRight{
+  float: right;
+  }
+
+  .centerAlign{
+    text-align: center;
+  }
+
+  .formPad{
+  padding: 16px;
+  }
+
+  .tabcontent .centerAlign{
+    text-align: center;
+  }
+
+  .movieSection{
+   background-color: #ccc;
+  }
+
   .dropdown .dropbtn {
     font-size: 20px;  
     border: none;
@@ -157,11 +177,14 @@
     clear: both;
   }
   
-    img {vertical-align: middle; }
+    img {
+      vertical-align: middle;
+      width: 100%;
+      max-height:100%;
+     }
   
   .slideshow-container {  
-    position: relative; 
-    height: 70%;
+    position: relative;   
     width: 100%;
     display: block;
   }
@@ -174,6 +197,7 @@
   padding: 8px 8px;
   width: 100%;
   }
+  
   .about-section ol li {
    text-align: left;
   margin-left: 30%;
@@ -297,6 +321,9 @@ padding-left: 5%;
 .btn {
     float:right;
      color:dodgerblue;
+}
+.btnMargin{
+  margin-left: 30%; 
 }
 .row1 {
   margin: 16px -16px;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Content/Main.css';
-
+import { Link } from 'react-router-dom'
 import img from './Content/images/1.jpg';
 import img1 from './Content/images/it.jpg';
 import img2 from './Content/images/Supergirl.jpg';
@@ -29,7 +29,6 @@ class App extends Component {
         this.state = {
             index: idxStart,
             next: this.getNextIndex(idxStart),
-            move: false,
         };
     }
     getNextIndex(idx) {
@@ -46,36 +45,28 @@ class App extends Component {
     }
     componentDidMount() {
         setInterval(() => {
-            this.setState({
-                move: true
-            });
             setTimeout(() => {
-                this.setState({
-                    move: false
-                });
                 this.setIndexes(this.getNextIndex(this.state.index));
             }, 500);
         }, 2000);
     }
     render() {
-        const move = this.state.move ? 'move' : '';
-        if (this.state.move) {
 
-        }
         return (
             <div>
                 <div className="header">
-                    MyMovieLib<a href="/Signup" type="submit" class="buttons btnStyle" >Sign up</a>
+                    MyMovieLib<Link to="/Signup" className="buttons btnStyle">Sign up</Link>
                 </div>
                 <div className="navbar">
-                    <a className="tablink active" href="/" >Home</a>
-                    <a class="tablink " href="/WelcomePage" >All Movies</a>
-                    <a class="tablink" href="/addMovie" >Add Movie</a>
-                    <a className="tablink" href="/about" style={{ float: 'right' }}>About</a>
+                    <Link to="/" className="active">Home</Link>
+                    <Link to="/WelcomePage" >All Movies</Link>
+                    <Link to="/addMovie" >Add Movie</Link>
+                    <Link to="/about" className="floatRight" >About</Link>
+
 
                 </div>
-                <div className={`slideshow-container ${move}`}>
-                    <img src={pics[this.state.index]} alt="" style={{ width: "100%", height: "50%" }} /> </div>
+                <div className={`slideshow-container`}>
+                    <img src={pics[this.state.index]} alt="" /> </div>
             </div>
 
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import './Main.css';
 import { updateMovie } from './myMovieActions';
+import { Link } from 'react-router-dom'
 const fetch = require('node-fetch')
 
 class movie extends React.Component {
@@ -10,6 +11,7 @@ class movie extends React.Component {
             movieData: {}
         }
     }
+
     componentDidMount() {
         const id = this.props.match.params.id
         this.singleMovie(id);
@@ -27,42 +29,35 @@ class movie extends React.Component {
 
     }
     handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
+        const { name, value } = event.target;
+        this.setState({ movieData: { ...this.state.movieData, [name]: value } });
 
-        this.setState({
-            [name]: value
-        })
+        console.log(this.state)
     }
-    handleSubmit = () => {
-        const text = {
-            title: this.state.movieData.title,
-            description: this.state.movieData.description,
-            genre: this.state.movieData.genre,
-            imageUrl: this.state.movieData.imageurl,
-            trailer: this.state.movieData.trailer,
-            director: this.state.movieData.director,
-            releaseDate: this.state.movieData.releaseDate,
-            operation: "insert"
-        }
-        updateMovie(text);
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const { _id, ...newData } = this.state.movieData
+        console.log(newData);
+        updateMovie(newData, this.props.match.params.id);
+
     }
     render() {
+        const { title, director, genre, description, releaseDate, trailer, imageUrl } = this.state.movieData;
         return (
 
             <div>
                 <div className="header">
-                    MyMovieLib<a href="/" type="submit" class="buttons btnStyle" >Sign Out</a>
+                    MyMovieLib<Link to="/" className="buttons btnStyle">Sign Out</Link>
                 </div>
                 <div className="navbar">
-                    <a className="tablink" href="/" >Home</a>
-                    <a className="tablink active " href="/WelcomePage" >All Movies</a>
-                    <a className="tablink" href="/addMovie" >Add Movie</a>
+                    <Link to="/">Home</Link>
+                    <Link to="/WelcomePage" className="active">All Movies</Link>
+                    <Link to="/addMovie">Add Movie</Link>
                     <div className="dropdown">
                         <button className="dropbtn">MyAccount</button>
                         <div className="dropdown-content">
-                            <a className="tablink" href="/WelcomePage">Profile</a>
-                            <a className="tablink" href="/WelcomePage">Change Password</a>
+                            <Link to="/WelcomePage" >Profile</Link>
+                            <Link to="/WelcomePage" >Change Password</Link>
                         </div>
                     </div>
                 </div>
@@ -71,38 +66,47 @@ class movie extends React.Component {
                 <hr />
                 <form onSubmit={this.handleSubmit} className="editData">
                     <div className="row">
-                        <div className="col-25"> <label for="title">Title:</label></div>
-                        <div className="col-75"><input type="text" id="title" name="title" value={this.state.movieData.title} onChange={this.handleChange} required /></div>
+                        <div className="col-25"> <label htmlFor="title">Title:</label></div>
+                        <div className="col-75"><input type="text" id="title" name="title" value={title} onChange={this.handleChange} required /></div>
                     </div>
                     <div className="row">
-                        <div className="col-25"> <label for="Director">Director:</label></div>
-                        <div className="col-75"><input type="text" id="director" name="director" value={this.state.movieData.director} onChange={this.handleChange} required /></div>
+                        <div className="col-25"> <label htmlFor="Director">Director:</label></div>
+                        <div className="col-75"><input type="text" id="director" name="director" value={director} onChange={this.handleChange} required /></div>
                     </div>
                     <div className="row">
-                        <div className="col-25"> <label for="genre">Genre:</label></div>
-                        <div className="col-75"><input type="text" id="genre" name="genre" value={this.state.movieData.genre} onChange={this.handleChange} required /></div>
+                        <div className="col-25"> <label htmlFor="genre">Genre:</label></div>
+                        <div className="col-75">
+                            <select id="genre" name="genre" value={genre} onChange={this.handleChange} >
+                                <option value="action">{genre}</option>
+                                <option value="action">Action</option>
+                                <option value="horror">Horror</option>
+                                <option value="comedy">Comedy</option>
+                                <option value="thriller">Thriller</option>
+                                <option value="adventure">Adventure</option>
+                            </select>
+                        </div>
                     </div>
                     <div className="row">
-                        <div className="col-25"> <label for="description">Description:</label></div>
-                        <div><textarea id="description" name="description" value={this.state.movieData.description} onChange={this.handleChange} required /></div>
+                        <div className="col-25"> <label htmlFor="description">Description:</label></div>
+                        <div><textarea id="description" name="description" value={description} onChange={this.handleChange} required /></div>
                     </div>
                     <div className="row">
-                        <div className="col-25"> <label for="releaseDate">Release Date:</label></div>
-                        <div className="col-75"><input type="text" id="releaseDate" name="releaseDate" value={this.state.movieData.releaseDate} onChange={this.handleChange} required /></div>
+                        <div className="col-25"> <label htmlFor="releaseDate">Release Date:</label></div>
+                        <div className="col-75"><input type="text" id="releaseDate" name="releaseDate" value={releaseDate} onChange={this.handleChange} required /></div>
                     </div>
                     <div className="row">
-                        <div className="col-25"> <label for="trailer">Trailer:</label></div>
-                        <div className="col-75"><input type="text" id="trailer" name="trailer" value={this.state.movieData.trailer} onChange={this.handleChange} /></div>
+                        <div className="col-25"> <label htmlFor="trailer">Trailer:</label></div>
+                        <div className="col-75"><input type="text" id="trailer" name="trailer" value={trailer} onChange={this.handleChange} /></div>
                     </div>
                     <div className="row">
-                        <div className="col-25"> <label for="imageUrl">Image Url:</label></div>
-                        <div className="col-75"><input type="text" id="imageUrl" name="imageUrl" value={this.state.movieData.imageUrl} onChange={this.handleChange} /></div>
+                        <div className="col-25"> <label htmlFor="imageUrl">Image Url:</label></div>
+                        <div className="col-75"><input type="text" id="imageUrl" name="imageUrl" value={imageUrl} onChange={this.handleChange} /></div>
                     </div>
                     <div className="row">
                         <input type="submit" value="Save" />
                     </div>
                     <div className="row">
-                        <a href={`/movie/${this.state.movieData._id}`} className="cancelbtn">Back</a>
+                        <Link to={`/movie/${this.props.match.params.id}`} className="cancelbtn">Back</Link>
                     </div>
                 </form></div>
 

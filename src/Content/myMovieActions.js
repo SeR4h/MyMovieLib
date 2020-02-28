@@ -1,4 +1,5 @@
 import { Component } from 'react'
+
 const fetch = require('node-fetch')
 
 export function PostMovie(data) {
@@ -10,13 +11,21 @@ export function PostMovie(data) {
       'Content-Type': 'application/json'
     }
   };
+  console.log(JSON.stringify(data))
   return fetch("https://movi-lib.herokuapp.com/api/v1/movies", requestOptions)
     .then(response => response.json())
-    .then(result => result)
-    .catch(error => console.log('error', error));
+    .then(() => {
+      alert("Movie successfully added")
+      window.location.href = "/WelcomePage"
+    })
+    .catch((error) => {
+      console.log('error', error)
+      alert("Couldnot add movie,Check if you filled all compulsory fields and try again")
+    });
+
 }
 
-export function updateMovie(data) {
+export function updateMovie(data, id) {
   var requestOptions = {
     method: 'PUT',
     headers: {
@@ -25,22 +34,35 @@ export function updateMovie(data) {
     body: JSON.stringify(data),
     redirect: 'follow'
   };
-  fetch("https://movi-lib.herokuapp.com/api/v1/movies/{{movie_id}}", requestOptions)
-    .then(response => response.text())
-    .then(result => result)
-    .catch(error => console.log('error', error));
+  fetch(`https://movi-lib.herokuapp.com/api/v1/movies/${id}`, requestOptions)
+    .then(response => response.json())
+    .then((result) => {
+      console.log(result);
+      alert("Movie successfully updated")
+      window.location.href = `/movie/${id}`
+    })
+    .catch((error) => {
+      console.log('error', error)
+      alert("Something went wrong!!Please try again")
+    });
 }
 
-export function deleteMovie() {
+export function deleteMovie(id) {
   var requestOptions = {
     method: 'DELETE',
     redirect: 'follow'
   };
-
-  fetch("https://movi-lib.herokuapp.com/api/v1/movies//{{movie_id}}", requestOptions)
+  fetch(`https://movi-lib.herokuapp.com/api/v1/movies/${id}`, requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    .then((result) => {
+      console.log(result);
+      alert("Movie Deleted")
+      window.location.href = "/WelcomePage"
+    })
+    .catch((error) => {
+      console.log('error', error)
+    });
+
 }
 class getAllMovies extends Component {
 

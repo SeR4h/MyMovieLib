@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react'
 import './Main.css';
+import './Main.css';
+import { Link } from 'react-router-dom'
 
 const fetch = require('node-fetch')
 var requestOptions = {
   method: 'GET',
   redirect: 'follow'
 };
-var message = 'Click on image to see movie details';
+
 class WelcomePage extends Component {
   constructor(props) {
     super(props)
@@ -21,7 +23,6 @@ class WelcomePage extends Component {
       .then(response => response.json())
       .then(result => this.setState({ data: result.data }))
       .catch(error => console.log('error', error));
-    alert(message);
   }
 
   render() {
@@ -29,32 +30,32 @@ class WelcomePage extends Component {
     return (
       <div>
         <div className="header">
-          MyMovieLib<a href="/Login" type="submit" class="buttons btnStyle" >Log In</a>
+          MyMovieLib<Link to="/Login" className="buttons btnStyle">Log In</Link>
         </div>
         <div className="navbar">
-          <a className="tablink" href="/" >Home</a>
-          <a className="tablink active " href="/WelcomePage" >All Movies</a>
-          <a className="tablink" href="/addMovie" >Add Movie</a>
+          <Link to="/" >Home</Link>
+          <Link to="/WelcomePage" className="active">All Movies</Link>
+          <Link to="/addMovie" >Add Movie</Link>
           <div className="dropdown">
             <button className="dropbtn">MyAccount</button>
             <div className="dropdown-content">
-              <a className="tablink" href="/WelcomePage">Profile</a>
-              <a className="tablink" href="/WelcomePage">Change Password</a>
+              <Link to="/WelcomePage">Profile</Link>
+              <Link to="/WelcomePage">Change Password</Link>
             </div>
           </div>
         </div>
-        <div id="allmovies" style={{ backgroundColor: '#ccc' }}  >
+        <div id="allmovies" className="movieSection"  >
           <h2>Movie List</h2>
           <hr />
           {
             data.map((dat) => {
               return (
-                <div className="row1">
+                <div className="row1" key={dat._id}>
                   <div className="column1">
                     <div className="contents">
 
-                      <a href={`/movie/${dat._id}`}><img src={dat.imageUrl} style={{ width: '100%', height: '100%' }} /></a>
-                      <h3> {dat.title}</h3>
+                      <Link to={`/movie/${dat._id}`}><img src={dat.imageUrl} />
+                        <h3> {dat.title}</h3></Link>
                       <p>{dat.genre}</p>
                     </div>
                     <hr /></div>
