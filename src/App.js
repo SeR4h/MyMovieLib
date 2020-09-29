@@ -55,15 +55,13 @@ class App extends Component {
         return (
             <div>
                 <div className="header">
-                    MyMovieLib<Link to="/Signup" className="buttons btnStyle">Sign up</Link>
+                    MyMovieLib
                 </div>
                 <div className="navbar">
                     <Link to="/" className="active">Home</Link>
                     <Link to="/WelcomePage" >All Movies</Link>
                     <Link to="/addMovie" >Add Movie</Link>
                     <Link to="/about" className="floatRight" >About</Link>
-
-
                 </div>
                 <div className={`slideshow-container`}>
                     <img src={pics[this.state.index]} alt="" /> </div>

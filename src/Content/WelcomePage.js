@@ -30,21 +30,15 @@ class WelcomePage extends Component {
     return (
       <div>
         <div className="header">
-          MyMovieLib<Link to="/Login" className="buttons btnStyle">Log In</Link>
+          MyMovieLib
         </div>
         <div className="navbar">
           <Link to="/" >Home</Link>
           <Link to="/WelcomePage" className="active">All Movies</Link>
           <Link to="/addMovie" >Add Movie</Link>
-          <div className="dropdown">
-            <button className="dropbtn">MyAccount</button>
-            <div className="dropdown-content">
-              <Link to="/WelcomePage">Profile</Link>
-              <Link to="/WelcomePage">Change Password</Link>
-            </div>
-          </div>
+          <Link to="/about" className="floatRight" >About</Link>
         </div>
-        <div id="allmovies" className="movieSection"  >
+        <div id="allmovies" className="movieSection margin"  >
           <h2>Movie List</h2>
           <hr />
           {

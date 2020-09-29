@@ -50,19 +50,13 @@ class addMovie extends Component {
         return (
             <div>
                 <div className="header">
-                    MyMovieLib<Link to="/" className="buttons btnStyle">Sign Out</Link>
+                    MyMovieLib
                 </div>
                 <div className="navbar">
                     <Link to="/">Home</Link>
                     <Link to="/WelcomePage">All Movies</Link>
                     <Link to="/addMovie" className="active">Add Movie</Link>
-                    <div className="dropdown">
-                        <button className="dropbtn">MyAccount</button>
-                        <div className="dropdown-content">
-                            <Link to="/WelcomePage">Profile</Link>
-                            <Link to="/WelcomePage">Change Password</Link>
-                        </div>
-                    </div>
+                    <Link to="/about" className="floatRight" >About</Link>
                 </div>
                 <div className="tabcontent movief">
                     <form onSubmit={this.handleSubmit} >
@@ -110,7 +104,7 @@ class addMovie extends Component {
                             <div className="col-75"><input type="url" id="imageUrl" name="imageUrl" value={imageUrl} onChange={this.handleChange} /></div>
                         </div>
                         <div className="row">
-                            <input type="submit" value="ADD" />
+                            <input type="submit" value="ADD" id="col-25" />
                         </div>
                         <div>
                         </div>

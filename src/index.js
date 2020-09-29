@@ -4,9 +4,7 @@ import { Route, BrowserRouter as Router } from 'react-router-dom'
 import './index.css';
 import App from './App';
 
-import SignUp from './Content/SignUp';
 import about from './Content/about';
-import login from './Content/Login';
 import welcome from './Content/WelcomePage';
 import addMovie from './Content/addMovie';
 import movie from './Content/movie';
@@ -17,9 +15,7 @@ const routing = (
   <Router>
     <div>
       <Route exact path="/" component={App} />
-      <Route path="/SignUp" component={SignUp} />
       <Route path="/about" component={about} />
-      <Route path="/Login" component={login} />
       <Route path="/WelcomePage" component={welcome} />
       <Route path="/addMovie" component={addMovie} />
       <Route path="/movie/:id" component={movie} />

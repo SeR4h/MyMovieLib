@@ -7,7 +7,7 @@ class About extends Component {
 
             <div id="about" className="tabcontent">
                 <div className="header">
-                    MyMovieLib <Link to="/Signup" className="buttons btnStyle">Sign up</Link>
+                    MyMovieLib
                 </div>
                 <div className="navbar">
                     <Link to="/">Home</Link>
